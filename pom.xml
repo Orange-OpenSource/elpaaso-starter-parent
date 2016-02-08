@@ -52,7 +52,7 @@
         </snapshotRepository>
     </distributionManagement>
 
-    <inceptionYear>2016</inceptionYear>
+    <inceptionYear>2015-2016</inceptionYear>
     <build>
         <pluginManagement>
             <plugins>

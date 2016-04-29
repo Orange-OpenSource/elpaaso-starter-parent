@@ -51,7 +51,30 @@
         </snapshotRepository>
     </distributionManagement>
 
+    <scm>
+        <connection>scm:git:https://github.com/Orange-OpenSource/elpaaso-starter-parent.git</connection>
+        <developerConnection>scm:git:https://github.com/Orange-OpenSource/elpaaso-starter-parent.git
+        </developerConnection>
+        <url>https://github.com/Orange-OpenSource/elpaaso-starter-parent</url>
+    </scm>
+
+    <ciManagement>
+        <system>Travis</system>
+        <url>https://travis-ci.org/Orange-OpenSource/${project.artifactId}</url>
+    </ciManagement>
+
+    <issueManagement>
+        <system>GitHub Issues</system>
+        <url>https://github.com/Orange-OpenSource/elpaaso-starter-parent/issues</url>
+    </issueManagement>
+
+    <organization>
+        <name>Orange</name>
+        <url>http://opensource.orange.com</url>
+    </organization>
+
     <inceptionYear>2015-2016</inceptionYear>
+
     <build>
         <pluginManagement>
             <plugins>

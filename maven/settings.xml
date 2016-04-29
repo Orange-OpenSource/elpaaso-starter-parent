@@ -111,6 +111,30 @@
                 </pluginRepository>
             </pluginRepositories>
         </profile>
+        <profile>
+            <id>bintray-elpaaso-maven</id>
+            <!-- enable to deploy release on bintray instead of promoting build from JFrog OSS-->
+            <repositories>
+                <repository>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                    <id>bintray-elpaaso-maven</id>
+                    <name>bintray</name>
+                    <url>http://dl.bintray.com/elpaaso/maven</url>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                    <id>bintray-elpaaso-maven</id>
+                    <name>bintray-plugins</name>
+                    <url>http://dl.bintray.com/elpaaso/maven</url>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
     </profiles>
 
     <activeProfiles>

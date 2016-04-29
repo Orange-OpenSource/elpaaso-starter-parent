@@ -53,8 +53,7 @@
 
     <scm>
         <connection>scm:git:https://github.com/Orange-OpenSource/elpaaso-starter-parent.git</connection>
-        <developerConnection>scm:git:https://github.com/Orange-OpenSource/elpaaso-starter-parent.git
-        </developerConnection>
+        <developerConnection>scm:git:https://github.com/Orange-OpenSource/elpaaso-starter-parent.git</developerConnection>
         <url>https://github.com/Orange-OpenSource/elpaaso-starter-parent</url>
     </scm>
 

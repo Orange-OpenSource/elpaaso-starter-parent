@@ -1,7 +1,7 @@
 language: bash
-sudo: required
-services:
-  - docker
+#sudo: required
+#services:
+#  - docker
 before_install:
   - git config --global user.name "$GH_USER"
   - git config --global user.email "$GH_USER_EMAIL"
@@ -11,9 +11,8 @@ before_install:
   - git config --global push.default simple
 script:
   - chmod ugo+x common-build-tools/travis/sh/*.sh
+  - chmod ugo+x mvnw
   - export PATH=.:$PATH
-  - ls -lrt
-  - ls -lrt common-build-tools/travis/sh/
   - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && common-build-tools/travis/sh/buildReleaseWrapper.sh || true'
   - '[ "${TRAVIS_PULL_REQUEST}" != "false" ] && mvnw clean verify --settings settings.xml || true'
 #  - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && docker run -it -v $(pwd):/root/sources -e BINTRAY_USER -e BINTRAY_PASSWORD -e COVERALLS_TOKEN -e TRAVIS_BRANCH -e TRAVIS_TAG -e TRAVIS_PULL_REQUEST -e TRAVIS_BUILD_NUMBER -e TRAVIS_REPO_SLUG -w /root/sources maven:${MAVEN_DOCKER_VERSION}-jdk-8 common-build-tools/travis/sh/buildRelease.sh || true'
@@ -26,7 +25,7 @@ branches:
 #  - bin/release.sh
 env:
   global:
-  - MAVEN_DOCKER_VERSION=3.3
+#  - MAVEN_DOCKER_VERSION=3.3
   - secure: q+stfGib8cy96V/SKHh831kZu5XYc6o//EHyvsoytIN7M0b5rBk3AseXdXXLmcsZY7Dj+rVHs07Wafc6Uh9mgmc+i4zL0cs379pIHATjgP+DyTwbMeXn4EGdwG92lZOpSTDCyZXbui4NW7le5I8+dZ/XS+rKA4quXVTwAQrFYrEfK24V/tzchKnj5FCU7FEMOU39JVSNxSqtEy4x+3wcENTpQbrl4KuOXSGT2ygsr3cSTaq3X6T0dyP4Wsmas5oOPzjTeEdNgF6/hMSYuC9ySsFDSgnJAYXOya4QqdAC0bdAvfoVvRFxn7fhElJFhzHZDCfTFG6ONFOZk02DThibGnKGnULKY9o87FJuvoTDCPnglMg2Fi6H3RL0px1dkm9HzzLIwr7g9htIy2AJNGPSCiE6TXMtjKBFSjhYA1ACPUSt2uZVtWTPU5sh+WiQUafMcftGuR2Sr3hYEyIuNmasAEoldduNDPBEVaoVTuON9MIft09Yi7jMfnZIbvc57/gbTvxA14SbAo4sX3ZrN67Q+NfKpxItKwtIYMo4zLBKEwkrganybHLrwZGGKq2RBYBNuxN+zN26x66yon52AuS+5H0L7T4dfYAsq1gZp6tpSUtbTuSZtM7yJzTi+DCROD6gREl5odgT6s8rXBBD5prnKt93muu9/h5ddN0Jl5YyFLg=
   - secure: HUo6HF/6dLtW4AAbFgBjERdXDS7SXZqzvVTzEBYVrAvE0UdVJgnlkp29jD5Qa+nFKlyYc+sDZuedLSnIzvy0oZAB3M6U81uwynRPB9eRzWcV/ulG31/1NYIiVO3TTOoqgm5QbUcVo09dStlfDQJtUkkgj5N66ETvewuHwi2rURHXElwLFOSLDbVAO2PHaF8vONbfLSetpppA4WAcVH6hWJWmgoiIGnNqIWRYpmiP25OUjAbtYDvUVY4CQsJpEpLIUTJU+zIwPDeMB+YwS4/eeZwM3jhMuAOFj5Wg3pZjCi58z/SyNgPZ5lS5cSeOwXGeuqZCmuqKtatbcXfdsjjLHsV7H8PYwHDFi8cmYgBObDjEhysVpubaY3qU3kLdgVSMAgQWGiQFtTQeYvq3Xg3R4hzsSc+k3A3JDnXrygFqFNc5rZkMx9u2a2YMzL9AQnmmecqK5y8Be8dtRNqdsSM553f8XhaxEXJbbWOW858m+ypv8hXBMCX2cu3AaWhPehsuSHG4V2sXfXAX8QHjkW9OY3qyB+q13ENWtOnkb1HyC/YEfkCcPp1m37iRyl0/awG+oR1u5QaxIjUKf+zIZzI8iVDSthlNj0n6tLlQdjnWvSbOrLs3GTKZN/TGszMrCtUscvFgEKWB24JgA9vE8KrW5ZLVlLu26XmG6tz65JXDphU=
   - secure: ZT/hW6xi1vnaByCl8zhOZc15ozhHOE5/+HZaUtGeNNmXl3gz7JCDWCTURI2zJTQsuSWXRbdrB6md5WxqczkyllU4jOZvInogeBGLTpuFJcpMxbG4FAd91CoXXZtvsTqFMKg+gbALtmPN+Y3Qt5FwkKF8MjXRdtefw+N0hilJ0Ql05xKK6DVMTfGMPJEtnSwk3+6c1yFZmOn2Q5FEU9FVSTENQAFuonSKZDaI6B+46CVeLAFqWQ0frhaPrKB9i8SzKSK7IAynWf40Y1Y7H/C6OJ/gF3B2Gsgp6HMovcp/zP66O4WDCaK6Zie/xNB7XfTLz4U+ovrxbxz6aPbSlMNmSTCnPcI6h8Wqan78+Q5Zotd0BVAs6YR3KOfvGqhpmTHpFM/o45RJCZAMGDDRai3jAbe2aW59oKvEmXHwCDPiiGzUgr08fG9HIw0iAJD12I/chSKbcusRzDTCHYq/0VyoZRbi7DbsyzMXSIOsULQ0wu0BU2uUs33EUUVO3XRMIZiiGiwIxNW9c1f6rzzjaoR/+N3aSFRE72KapUFIgurLyidKQU3XA5qnumJ1VZ3h3BcsZyM6MmayS6KgVeUkKQC1vWxhFWvKDOQoevvk7yDJEMKW8IiHgVbCZzhGk/hy1JPvcUyVxp8oAlevy1QuaDAmAFq52FprMQtUDu5aT3bUox8=

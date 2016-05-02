@@ -13,6 +13,16 @@
 
 -->
 <settings>
+    <proxies>
+        <proxy>
+            <id>cntlm</id>
+            <active>true</active>
+            <host>localhost</host>
+            <port>3128</port>
+            <protocol>http</protocol>
+            <nonProxyHosts>localhost,francetelecom.fr,orange.fr,orange-labs.fr,itn.ftgroup</nonProxyHosts>
+        </proxy>
+    </proxies>
     <servers>
         <server>
             <id>jfrog-oss</id>

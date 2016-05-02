@@ -12,7 +12,9 @@ before_install:
 script:
   - chmod ugo+x common-build-tools/travis/sh/*.sh
   - export PATH=.:$PATH
-  - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && common-build-tools/travis/sh/buildRelease.sh || true'
+  - ls -lrt
+  - ls -lrt common-build-tools/travis/sh/
+  - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && common-build-tools/travis/sh/buildReleaseWrapper.sh || true'
   - '[ "${TRAVIS_PULL_REQUEST}" != "false" ] && mvnw clean verify --settings settings.xml || true'
 #  - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && docker run -it -v $(pwd):/root/sources -e BINTRAY_USER -e BINTRAY_PASSWORD -e COVERALLS_TOKEN -e TRAVIS_BRANCH -e TRAVIS_TAG -e TRAVIS_PULL_REQUEST -e TRAVIS_BUILD_NUMBER -e TRAVIS_REPO_SLUG -w /root/sources maven:${MAVEN_DOCKER_VERSION}-jdk-8 common-build-tools/travis/sh/buildRelease.sh || true'
 #  - '[ "${TRAVIS_PULL_REQUEST}" != "false" ] && docker run -it -v $(pwd):/root/sources -w /root/sources maven:${MAVEN_DOCKER_VERSION}-jdk-8 mvn clean verify --settings settings.xml || true'

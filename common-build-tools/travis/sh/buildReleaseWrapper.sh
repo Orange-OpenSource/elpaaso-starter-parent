@@ -35,7 +35,7 @@ then
 
 	#Download dependencies
 	mvnw -q release:help --settings settings.xml
-    mvnw --batch-mode -e release:prepare release:perform --settings settings.xml
+    mvnw --batch-mode -e release:prepare --settings settings.xml
 
 	echo $RELEASE_CANDIDATE_VERSION > RELEASE_CANDIDATE_VERSION
 else

@@ -28,7 +28,8 @@ if [ "${TRAVIS_PULL_REQUEST}" = "false" -a "$TRAVIS_BRANCH" = "master" ]
 then
 	#We are on master without PR
 	export RELEASE_CANDIDATE_VERSION=$VERSION_PREFIX.${TRAVIS_BUILD_NUMBER}
-	git checkout -b "release-candidate/$RELEASE_CANDIDATE_VERSION"
+	export GIT_BRANCH_NAME=release-candidate/$RELEASE_CANDIDATE_VERSION
+	git checkout -b "$GIT_BRANCH_NAME"
 
 	echo "Release candidate snapshot version: $RELEASE_CANDIDATE_VERSION"
 
@@ -38,7 +39,22 @@ then
 	mvnw -q release:help --settings settings.xml
     mvnw --batch-mode -e release:prepare release:perform --settings settings.xml
 
-	echo $RELEASE_CANDIDATE_VERSION > RELEASE_CANDIDATE_VERSION
+#	echo $RELEASE_CANDIDATE_VERSION > RELEASE_CANDIDATE_VERSION
+
+	export REPO_NAME=$(expr ${TRAVIS_REPO_SLUG} : ".*\/\(.*\)")
+	export GITHUB_DATA='{"title":"'$RELEASE_CANDIDATE_VERSION'","body":"Auto merge","head":"'$GIT_BRANCH_NAME'","base":"master"}'
+	echo "Github data: $GITHUB_DATA"
+	sleep 10
+	curl --silent -X POST --data "$GITHUB_DATA" https://$GH_TOKEN@api.github.com/repos/Orange-OpenSource/$REPO_NAME/pulls
+
+#	curl --silent -X PUT --data "$GITHUB_DATA" https://$GH_TOKEN@api.github.com/repos/Orange-OpenSource/$REPO_NAME/pulls/$PR_ID/merge
+
+#	curl --silent -X GET --data "$GITHUB_DATA" https://$GH_TOKEN@api.github.com/repos/Orange-OpenSource/$REPO_NAME/pulls/$PR_ID/merge
+
+
+
+
+
 else
 	mvnw -q install:help --settings settings.xml
 	mvnw install --settings settings.xml

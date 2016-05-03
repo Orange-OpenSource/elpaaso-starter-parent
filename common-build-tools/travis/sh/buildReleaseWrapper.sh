@@ -28,6 +28,7 @@ if [ "${TRAVIS_PULL_REQUEST}" = "false" -a "$TRAVIS_BRANCH" = "master" ]
 then
 	#We are on master without PR
 	export RELEASE_CANDIDATE_VERSION=$VERSION_PREFIX.${TRAVIS_BUILD_NUMBER}
+	git checkout -b "release-candidate/$RELEASE_CANDIDATE_VERSION"
 
 	echo "Release candidate snapshot version: $RELEASE_CANDIDATE_VERSION"
 
@@ -35,7 +36,7 @@ then
 
 	#Download dependencies
 	mvnw -q release:help --settings settings.xml
-    mvnw --batch-mode -e release:prepare --settings settings.xml
+    mvnw --batch-mode -e release:prepare release:perform --settings settings.xml
 
 	echo $RELEASE_CANDIDATE_VERSION > RELEASE_CANDIDATE_VERSION
 else

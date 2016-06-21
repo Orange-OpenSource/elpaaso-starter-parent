@@ -37,7 +37,7 @@ then
 
 	#Download dependencies
 	mvnw -q release:help --settings settings.xml
-    mvnw --batch-mode -e release:prepare release:perform -DreleaseVersion=$RELEASE_CANDIDATE_VERSION  --settings settings.xml
+    mvnw --batch-mode -e release:prepare release:perform -DreleaseVersion=$RELEASE_CANDIDATE_VERSION  --settings settings.xml $CUSTOM_MAVEN_PARAMETER
 
 #	echo $RELEASE_CANDIDATE_VERSION > RELEASE_CANDIDATE_VERSION
 
@@ -50,10 +50,6 @@ then
 #	curl --silent -X PUT --data "$GITHUB_DATA" https://$GH_TOKEN@api.github.com/repos/Orange-OpenSource/$REPO_NAME/pulls/$PR_ID/merge
 
 #	curl --silent -X GET --data "$GITHUB_DATA" https://$GH_TOKEN@api.github.com/repos/Orange-OpenSource/$REPO_NAME/pulls/$PR_ID/merge
-
-
-
-
 
 else
 	mvnw -q install:help --settings settings.xml

@@ -33,6 +33,8 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
+        <bintray.subject>elpaaso</bintray.subject>
+        <bintray.repo>maven</bintray.repo>
 
         <!-- plugin version-->
         <jacoco-maven-plugin.version>0.7.7.201606060606</jacoco-maven-plugin.version>
@@ -299,7 +301,7 @@
                 <repository>
                     <id>jfrog-oss</id>
                     <url>
-                        https://api.bintray.com/maven/${bintray.subject}/${bintray.repo}/${bintray.package}/;publish=1
+                        https://api.bintray.com/maven/${bintray.subject}/${bintray.repo}/${project.artifactId}/;publish=1
                     </url>
                 </repository>
             </distributionManagement>

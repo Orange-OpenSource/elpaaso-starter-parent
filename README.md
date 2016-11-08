@@ -1,6 +1,6 @@
 # ElPaaSo starter parent
 
-[![Build Status](https://travis-ci.org/Orange-OpenSource/elpaaso-starter-parent.svg?branch=master)](https://travis-ci.org/Orange-OpenSource/elpaaso-starter-parent)
+[![Build Status](https://travis-ci.org/orange-cloudfoundry/elpaaso-starter-parent.svg?branch=master)](https://travis-ci.org/orange-cloudfoundry/elpaaso-starter-parent)
 [![Apache Version 2 Licence](http://img.shields.io/:license-Apache%20v2-blue.svg)](LICENSE.md)
 [![Bintray](https://www.bintray.com/docs/images/bintray_badge_color.png)](https://bintray.com/elpaaso/maven/elpaaso-starter-parent/view?source=watch)
 [![JCenter](https://img.shields.io/badge/JCenter-available-blue.svg)](https://bintray.com/bintray/jcenter?filterByPkgName=elpaaso-starter-parent)
@@ -25,7 +25,7 @@ Main profiles:
  * bintray-elpaaso-maven: add ElPaaSo maven repo (hosted on [bintray](https://bintray.com/elpaaso/maven))
 
 
-It also use [elpaaso-build-tools](https://github.com/Orange-OpenSource/elpaaso-build-tools).
+It also use [elpaaso-build-tools](https://github.com/orange-cloudfoundry/elpaaso-build-tools).
 
 ## releasing
 

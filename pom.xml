@@ -53,20 +53,20 @@
     </distributionManagement>
 
     <scm>
-        <connection>scm:git:https://github.com/Orange-OpenSource/elpaaso-starter-parent.git</connection>
-        <developerConnection>scm:git:https://github.com/Orange-OpenSource/elpaaso-starter-parent.git</developerConnection>
-        <url>https://github.com/Orange-OpenSource/elpaaso-starter-parent</url>
+        <connection>scm:git:https://github.com/orange-cloudfoundry/elpaaso-starter-parent.git</connection>
+        <developerConnection>scm:git:https://github.com/orange-cloudfoundry/elpaaso-starter-parent.git</developerConnection>
+        <url>https://github.com/orange-cloudfoundry/elpaaso-starter-parent</url>
       <tag>HEAD</tag>
   </scm>
 
     <ciManagement>
         <system>Travis</system>
-        <url>https://travis-ci.org/Orange-OpenSource/${project.artifactId}</url>
+        <url>https://travis-ci.org/orange-cloudfoundry/${project.artifactId}</url>
     </ciManagement>
 
     <issueManagement>
         <system>GitHub Issues</system>
-        <url>https://github.com/Orange-OpenSource/elpaaso-starter-parent/issues</url>
+        <url>https://github.com/orange-cloudfoundry/elpaaso-starter-parent/issues</url>
     </issueManagement>
 
     <organization>
@@ -85,7 +85,7 @@
                     <version>${license-maven-plugin.version}</version>
                     <configuration>
                         <header>
-                            https://raw.githubusercontent.com/Orange-OpenSource/elpaaso/master/src/license/apache-2-custom-header.txt
+                            https://raw.githubusercontent.com/orange-cloudfoundry/elpaaso/master/src/license/apache-2-custom-header.txt
                         </header>
                         <properties>
                             <owner>Orange</owner>

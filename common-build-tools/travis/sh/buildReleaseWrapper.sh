@@ -45,11 +45,15 @@ then
 	export GITHUB_DATA='{"title":"'$RELEASE_CANDIDATE_VERSION'","body":"Auto merge","head":"'$GIT_BRANCH_NAME'","base":"master"}'
 	echo "Github data: $GITHUB_DATA"
 	sleep 10
-	curl --silent -X POST --data "$GITHUB_DATA" https://$GH_TOKEN@api.github.com/repos/Orange-OpenSource/$REPO_NAME/pulls
+	curl --silent -X POST --data "$GITHUB_DATA" https://$GH_TOKEN@api.github.com/repos/orange-cloudfoundry/$REPO_NAME/pulls
 
-#	curl --silent -X PUT --data "$GITHUB_DATA" https://$GH_TOKEN@api.github.com/repos/Orange-OpenSource/$REPO_NAME/pulls/$PR_ID/merge
+#	curl --silent -X PUT --data "$GITHUB_DATA" https://$GH_TOKEN@api.github.com/repos/orange-cloudfoundry/$REPO_NAME/pulls/$PR_ID/merge
 
-#	curl --silent -X GET --data "$GITHUB_DATA" https://$GH_TOKEN@api.github.com/repos/Orange-OpenSource/$REPO_NAME/pulls/$PR_ID/merge
+#	curl --silent -X GET --data "$GITHUB_DATA" https://$GH_TOKEN@api.github.com/repos/orange-cloudfoundry/$REPO_NAME/pulls/$PR_ID/merge
+
+
+
+
 
 else
 	mvnw -q install:help --settings settings.xml

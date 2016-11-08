@@ -24,20 +24,23 @@ export VERSION_SNAPSHOT=$(mvn help:evaluate -Dexpression=project.version --setti
 echo "Current version extracted from pom.xml: $VERSION_SNAPSHOT"
 export VERSION_PREFIX=$(expr "$VERSION_SNAPSHOT" : "\(.*\)-SNAP.*")
 
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
+
 if [ "${TRAVIS_PULL_REQUEST}" = "false" -a "$TRAVIS_BRANCH" = "master" ]
 then
 	#We are on master without PR
-	export RELEASE_CANDIDATE_VERSION=$VERSION_PREFIX.${TRAVIS_BUILD_NUMBER}
+	export RELEASE_CANDIDATE_VERSION=$VERSION_PREFIX
 
-	echo "Release candidate snapshot version: $RELEASE_CANDIDATE_VERSION"
+	echo "Release candidate version: $RELEASE_CANDIDATE_VERSION"
 
-	echo "Setting new version old: $VERSION_SNAPSHOT"
+	echo "Setting new version - (old: $VERSION_SNAPSHOT)"
 
 	#Download dependencies
 	mvn -q release:help --settings settings.xml
     mvn --batch-mode -e release:prepare release:perform --settings settings.xml
 
-	echo $RELEASE_CANDIDATE_VERSION > RELEASE_CANDIDATE_VERSION
+	##echo $RELEASE_CANDIDATE_VERSION > RELEASE_CANDIDATE_VERSION
 else
 	mvn -q install:help --settings settings.xml
 	mvn install --settings settings.xml
